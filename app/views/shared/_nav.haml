@@ -1,0 +1,13 @@
+.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-white.border-bottom.box-shadow
+  %h5.my-0.mr-md-auto.font-weight-normal= link_to 'NurseRec', root_path, class: 'text-dark'
+
+  %nav.my-2.my-md-0.mr-md-3
+    = link_to 'Dodaj lek', new_medicament_path, class: 'p-2 text-dark'
+    = link_to 'Leki', medicaments_path, class: 'p-2 text-dark'
+    = link_to 'Grupy leków', medicament_groups_path, class: 'p-2 text-dark'
+    = link_to 'Zaloguj', '#', class: 'p-2 text-dark'
+  .ml-2
+    .input-group
+      %input{type: 'text', class: 'form-control', placeholder: 'Szukaj leku...'}
+      .input-group-append
+        .input-group-text= link_to 'Szukaj', '#', class: 'text-dark'

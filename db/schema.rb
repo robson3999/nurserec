@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_155049) do
 
   create_table "medicaments", force: :cascade do |t|
     t.string "name"
-    t.integer "status"
+    t.integer "status", default: 0
     t.jsonb "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

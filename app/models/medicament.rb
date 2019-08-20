@@ -7,5 +7,8 @@ class Medicament < ApplicationRecord
     way_of_application: :string,
     description: :string
 
+  enum status: %i[ordinable pursued]
+
   validates :name, presence: true
+  validates :status, presence: true
 end
