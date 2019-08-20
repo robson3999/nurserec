@@ -21,11 +21,14 @@ gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
+gem 'ajax-datatables-rails', '~> 1.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'decent_exposure', '~> 3.0', '>= 3.0.2'
 gem 'haml', '~> 5.1', '>= 5.1.2'
 gem 'jsonb_accessor', '~> 1.0'
+gem 'jquery-datatables', '~> 1.10', '>= 1.10.19.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 gem 'simple_form', '~> 4.1'
 
 # Use Capistrano for deployment

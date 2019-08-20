@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_155049) do
+ActiveRecord::Schema.define(version: 2019_08_20_163825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "medicament_group_substances", force: :cascade do |t|
+    t.bigint "substance_id"
+    t.bigint "medicament_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["medicament_group_id"], name: "index_medicament_group_substances_on_medicament_group_id"
+    t.index ["substance_id"], name: "index_medicament_group_substances_on_substance_id"
+  end
 
   create_table "medicament_groups", force: :cascade do |t|
     t.string "name"
@@ -53,6 +62,8 @@ ActiveRecord::Schema.define(version: 2019_08_19_155049) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "medicament_group_substances", "medicament_groups"
+  add_foreign_key "medicament_group_substances", "substances"
   add_foreign_key "medicament_medicament_groups", "medicament_groups"
   add_foreign_key "medicament_medicament_groups", "medicaments"
   add_foreign_key "medicament_substances", "medicaments"

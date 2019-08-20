@@ -2,6 +2,13 @@ class MedicamentsController < ApplicationController
   expose :medicaments, :medicaments_kind
   expose :medicament
 
+  def index
+    respond_to do |format|
+      format.html
+      format.json { render json: MedicamentDatatable.new(params, view_context: view_context) }
+    end
+  end
+
   def create
     if medicament.save
       redirect_to medicament_path(medicament)
@@ -26,7 +33,7 @@ class MedicamentsController < ApplicationController
   private
 
   def medicament_params
-    params.require(:medicament).permit(:name, :status, :medicament_group)
+    params.require(:medicament).permit(:name, :status, medicament_group_ids: [])
   end
 
   def medicaments_kind

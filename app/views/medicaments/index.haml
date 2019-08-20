@@ -1,4 +1,27 @@
 %h2 Lista leków ordynowanych
 
-%table.table
-  = render medicaments
+%table.table#medicaments-datatable{'data-source': medicaments_path(format: :json)}
+  %thead
+    %tr
+      %th ID
+      %th Nazwa
+      %th Grupy
+      %th
+  %tbody
+
+
+:javascript
+  $('#medicaments-datatable').dataTable({
+    "processing": true,
+    "serverSide": true,
+    "ajax": {
+      "url": $('#medicaments-datatable').data('source')
+    },
+    "pagingType": "full_numbers",
+    "columns": [
+      {"data": "id"},
+      {"data": "name"},
+      {"data": "groups"},
+      {"data": "actions"}
+    ]
+  })
