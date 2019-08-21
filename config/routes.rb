@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   resources :medicament_groups
   resources :substances
 
+  scope :admin do
+    get :panel, to: 'admin#panel'
+    post :upload_substances_csv, to: 'admin#upload_substances_csv' 
+  end
+
   root to: 'medicaments#index'
 end

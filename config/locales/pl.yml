@@ -10,3 +10,5 @@ pl:
       substance:
         create: Dodaj substancję
         update: Zaktualizuj zmiany
+      substances:
+        submit: Wyślij
