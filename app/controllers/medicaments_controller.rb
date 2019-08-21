@@ -1,4 +1,6 @@
 class MedicamentsController < ApplicationController
+  before_action :authorize_medicament, only: %i[create update edit new destroy]
+
   expose :medicaments, :medicaments_kind
   expose :medicament
 
@@ -31,6 +33,10 @@ class MedicamentsController < ApplicationController
   end
 
   private
+
+  def authorize_medicament
+    authorize medicament
+  end
 
   def medicament_params
     params.require(:medicament).permit(:name, :status, medicament_group_ids: [])

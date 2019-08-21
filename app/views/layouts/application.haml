@@ -11,4 +11,8 @@
   %body
     = render 'shared/nav'
     .container
+      - if notice.present?
+        .alert.alert-success= notice
+      - if alert.present?
+        .alert.danger= alert
       = yield

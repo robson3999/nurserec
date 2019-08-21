@@ -2,10 +2,14 @@
   %h5.my-0.mr-md-auto.font-weight-normal= link_to 'NurseRec', root_path, class: 'text-dark'
 
   %nav.my-2.my-md-0.mr-md-3
-    = link_to 'Dodaj lek', new_medicament_path, class: 'p-2 text-dark'
+    - if current_user&.admin?
+      = link_to 'Dodaj lek', new_medicament_path, class: 'p-2 text-dark'
     = link_to 'Leki', medicaments_path, class: 'p-2 text-dark'
     = link_to 'Grupy leków', medicament_groups_path, class: 'p-2 text-dark'
-    = link_to 'Zaloguj', '#', class: 'p-2 text-dark'
+    - if current_user
+      = link_to 'Wyloguj', destroy_user_session_path, class: 'p-2 text-dark', method: :delete
+    - else
+      = link_to 'Zaloguj', login_path, class: 'p-2 text-dark'
   .ml-2
     .input-group
       %input{type: 'text', class: 'form-control', placeholder: 'Szukaj leku...'}

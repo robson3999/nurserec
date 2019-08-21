@@ -1,7 +1,8 @@
 class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
-  def_delegators :@view, :link_to, :edit_medicament_path, :medicament_path, :medicament_group_path, :html_safe, :raw
+  def_delegators :@view, :link_to, :edit_medicament_path, :medicament_path,
+                 :medicament_group_path, :html_safe, :raw, :current_user
 
   def initialize(params, opts = {})
     @view = opts[:view_context]
@@ -21,7 +22,7 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         id: record.id,
-        name: record.name,
+        name: link_to(record.name, medicament_path(record), class: 'text-dark'),
         groups: raw(medicament_groups(record)),
         actions: raw(medicament_actions(record))
       }
@@ -43,10 +44,11 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
 
   def medicament_actions(record)
     actions = []
-    actions << link_to('Edycja', edit_medicament_path(record), class: 'btn btn-sm')
-    actions << link_to('Usuń', medicament_path(record), class: 'btn btn-sm btn-danger', data: { confirm: 'Czy na pewno chcesz usunąć ten lek?' },
-                       method: :delete)
-
+    if current_user&.admin?
+      actions << link_to('Edycja', edit_medicament_path(record), class: 'btn btn-sm')
+      actions << link_to('Usuń', medicament_path(record), class: 'btn btn-sm btn-danger', data: { confirm: 'Czy na pewno chcesz usunąć ten lek?' },
+                         method: :delete)
+    end
     actions.join('<br />').html_safe
   end
 end
