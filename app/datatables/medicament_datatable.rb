@@ -30,6 +30,8 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
   end
 
   def get_raw_records
+    return medicament_group.medicaments if medicament_group.present?
+
     Medicament.ordinable
   end
 
@@ -50,5 +52,13 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
                          method: :delete)
     end
     actions.join('<br />').html_safe
+  end
+
+  def medicament_group_id
+    @medicament_group ||= options[:medicament_group_id]
+  end
+
+  def medicament_group
+    MedicamentGroup.find_by(id: medicament_group_id)
   end
 end

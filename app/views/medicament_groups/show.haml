@@ -1,4 +1,3 @@
 %h1= medicament_group.name
 
-%table.table
-  = render medicaments
+= render 'datatables/medicaments_datatable', medicament_group_id: medicament_group.id
