@@ -1,3 +1,7 @@
-%h2 Lista leków ordynowanych
-
+.row
+  .col-10
+    %h2 Lista leków ordynowanych
+  - if current_user&.admin?
+    .col-2.text-right
+      = link_to 'Dodaj lek', new_medicament_path, class: 'btn btn-sm btn-success'
 = render 'datatables/medicaments_datatable', medicament_group_id: nil

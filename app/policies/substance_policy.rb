@@ -1,0 +1,2 @@
+class SubstancePolicy < ApplicationPolicy
+end
