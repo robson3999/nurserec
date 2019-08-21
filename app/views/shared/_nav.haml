@@ -9,7 +9,7 @@
     - if current_user
       = link_to 'Wyloguj', destroy_user_session_path, class: 'p-2 text-dark', method: :delete
     - else
-      = link_to 'Zaloguj', new_user_session_path, class: 'p-2 text-dark'
+      = link_to 'Zaloguj', login_path, class: 'p-2 text-dark'
   .ml-2
     .input-group
       %input{type: 'text', class: 'form-control', placeholder: 'Szukaj leku...'}

@@ -1,5 +1,6 @@
 %tr
   %td= medicament.id
   %td= link_to medicament.name, medicament_path(medicament), class: 'text-dark'
-  %td= link_to('Edycja', edit_medicament_path(medicament))
-  %td= link_to('Usuń', medicament_path(medicament), data: { confirm: 'Czy na pewno chcesz usunąć ten lek z bazy?' }, method: :delete)
+  - if current_user&.admin?
+    %td= link_to('Edycja', edit_medicament_path(medicament))
+    %td= link_to('Usuń', medicament_path(medicament), data: { confirm: 'Czy na pewno chcesz usunąć ten lek z bazy?' }, method: :delete)

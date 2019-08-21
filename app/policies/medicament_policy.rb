@@ -1,0 +1,2 @@
+class MedicamentPolicy < ApplicationPolicy
+end
