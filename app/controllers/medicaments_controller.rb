@@ -7,7 +7,7 @@ class MedicamentsController < ApplicationController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: MedicamentDatatable.new(params, view_context: view_context) }
+      format.json { render json: MedicamentDatatable.new(params, medicament_group_id: params[:medicament_group_id], view_context: view_context) }
     end
   end
 

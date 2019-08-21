@@ -1,0 +1,9 @@
+pl:
+  medicaments:
+    ordinable: ordynowany
+    pursued: kontynuowany
+  helpers:
+    submit:
+      medicament:
+        create: "Dodaj lek"
+        update: "Zaktualizuj zmiany"
