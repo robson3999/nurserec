@@ -1,4 +1,4 @@
-%table.table#medicaments-datatable{'data-source': medicaments_path(format: :json, medicament_group_id: medicament_group_id)}
+%table.table#substances-datatable{'data-source': substances_path(format: :json)}
   %thead
     %tr
       %th ID
@@ -9,11 +9,11 @@
 
 
 :javascript
-  $('#medicaments-datatable').dataTable({
+  $('#substances-datatable').dataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
-      "url": $('#medicaments-datatable').data('source')
+      "url": $('#substances-datatable').data('source')
     },
     "pagingType": "full_numbers",
     "columns": [
@@ -21,7 +21,7 @@
       {"data": "name"},
       {"data": "groups"},
       {"data": "actions",
-       'className': "d-flex"}
+      'className': "d-flex"}
     ],
     "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.10.19/i18n/Polish.json"

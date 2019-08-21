@@ -1,0 +1,7 @@
+.row
+  .col-10
+    %h2 Lista substancji aktywnych
+  - if current_user&.admin?
+    .col-2.text-right
+      = link_to 'Dodaj substancję', new_substance_path, class: 'btn btn-sm btn-success'
+= render 'datatables/substances_datatable'

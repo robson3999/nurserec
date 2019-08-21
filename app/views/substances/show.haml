@@ -1,0 +1,21 @@
+.row
+  .col-10
+    %h1= substance.name
+
+  - if current_user&.admin?
+    .col-2
+      = link_to 'Edycja', edit_substance_path(substance), class: 'btn btn-sm btn-light'
+%hr
+.row
+  .col-12
+    %h2 Grupy leków
+    %ol
+      - substance.medicament_groups.each do |medicament_group|
+        %li= link_to medicament_group.name, medicament_group_path(medicament_group), class: 'text-dark'
+%hr
+.row
+  .col-12
+    %h2 Leki
+    %ol
+      - substance.medicaments.each do |medicament|
+        %li= link_to medicament.name, medicament_path(medicament), class: 'text-dark'

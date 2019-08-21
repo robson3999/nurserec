@@ -1,9 +1,10 @@
-= simple_form_for medicament do |f|
+= simple_form_for substance do |f|
   = f.input :name, label: 'Nazwa'
-  = f.input :status, as: :select, collection: medicaments_statuses
+  = f.association :medicaments, input_html: { class: 'select2' }, label: 'Leki'
   = f.association :medicament_groups, input_html: { class: 'select2' }, label: 'Grupy leków'
   = f.button :submit, class: 'btn btn-primary'
   = link_to 'Wstecz', :back, class: 'btn btn-dark'
+
 :javascript
   $(".select2").select2({
     theme: "bootstrap"

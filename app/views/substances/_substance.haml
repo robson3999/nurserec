@@ -1,0 +1,6 @@
+%tr
+  %td= substance.id
+  %td= link_to substance.name, substance_path(substance), class: 'text-dark'
+  - if current_user&.admin?
+    %td= link_to('Edycja', edit_substance_path(substance))
+    %td= link_to('Usuń', substance_path(substance), data: { confirm: 'Czy na pewno chcesz usunąć tą substancję z bazy?' }, method: :delete)

@@ -13,7 +13,7 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       id: { source: 'Medicament.id', cond: :eq },
       name: { source: 'Medicament.name', cond: :like },
-      groups: { source: 'Medicament.groups', searchable: false, orderable: false },
+      groups: { source: 'Medicament.medicament_groups', searchable: false, orderable: false },
       actions: { source: '', searchable: false, orderable: false }
     }
   end

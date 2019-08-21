@@ -5,5 +5,8 @@ pl:
   helpers:
     submit:
       medicament:
-        create: "Dodaj lek"
-        update: "Zaktualizuj zmiany"
+        create: Dodaj lek
+        update: Zaktualizuj zmiany
+      substance:
+        create: Dodaj substancję
+        update: Zaktualizuj zmiany
