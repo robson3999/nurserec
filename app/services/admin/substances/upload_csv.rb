@@ -3,10 +3,11 @@ require 'csv'
 module Admin
   module Substances
     class UploadCSV
-      attr_reader :csv
+      attr_reader :csv, :status
 
-      def initialize(csv:)
-        @csv = CSV.open(csv.tempfile)
+      def initialize(params:)
+        @csv = CSV.open(params[:file].tempfile)
+        @status = params[:status]
       end
 
       def call
@@ -19,7 +20,8 @@ module Admin
 
       def substance_params(substance_name)
         {
-          name: substance_name
+          name: substance_name,
+          status: status
         }
       end
     end

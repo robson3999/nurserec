@@ -4,5 +4,6 @@
   .col-12
     %h3 Wgrywanie substancji aktywnych
     = simple_form_for :substances, url: upload_substances_csv_path do |f|
-      = f.input :file, as: :file, label: 'Plik z substancjami aktywnymi', input_html: { accept: 'csv' }
+      = f.input :file, as: :file, label: 'Plik z substancjami aktywnymi', input_html: { accept: '.csv' }
+      = f.input :status, collection: medicaments_statuses, label: 'Status'
       = f.button :submit, class: 'btn btn-primary'

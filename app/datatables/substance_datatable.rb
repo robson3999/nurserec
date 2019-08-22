@@ -13,6 +13,7 @@ class SubstanceDatatable < AjaxDatatablesRails::ActiveRecord
     @view_columns ||= {
       id: { source: 'Substance.id', cond: :eq },
       name: { source: 'Substance.name', cond: :like },
+      status: { source: 'Substance.status' },
       groups: { source: 'Substance.medicament_groups', searchable: false, orderable: false },
       actions: { source: '', searchable: false, orderable: false }
     }
@@ -23,6 +24,7 @@ class SubstanceDatatable < AjaxDatatablesRails::ActiveRecord
       {
         id: record.id,
         name: link_to(record.name, substance_path(record), class: 'text-dark'),
+        status: status_badge(record.status),
         groups: raw(medicament_groups(record)),
         actions: raw(record_actions(record))
       }
@@ -50,5 +52,10 @@ class SubstanceDatatable < AjaxDatatablesRails::ActiveRecord
                          method: :delete)
     end
     actions.join('<br />').html_safe
+  end
+
+  def status_badge(status)
+    css_class = status == 'ordinable' ? 'success' : 'secondary'
+    ['<span class="badge badge-', css_class, '">',  I18n.t("medicaments.#{status}"), '</span>'].join.html_safe
   end
 end

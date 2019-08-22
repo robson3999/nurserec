@@ -2,7 +2,7 @@ class AdminController < ApplicationController
   before_action :authorize_admin
 
   def upload_substances_csv
-    ::Admin::Substances::UploadCSV.new(csv: substance_params[:file]).call
+    ::Admin::Substances::UploadCSV.new(params: substance_params).call
 
     redirect_to substances_path, notice: 'Substancje zaktualizowane!'
   end
@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   private
 
   def substance_params
-    params.require(:substances).permit(:file)
+    params.require(:substances).permit(:file, :status)
   end
 
   def authorize_admin

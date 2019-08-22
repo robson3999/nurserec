@@ -39,6 +39,6 @@ class SubstancesController < ApplicationController
   end
 
   def substance_params
-    params.require(:substance).permit(:name, medicament_ids: [], medicament_group_ids: [])
+    params.require(:substance).permit(:name, :status, medicament_ids: [], medicament_group_ids: [])
   end
 end

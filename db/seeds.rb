@@ -47,5 +47,5 @@ MEDICAMENT_GROUPS_NAMES.each do |medicament_group_name|
 end
 
 SUBSTANCES_NAMES.each do |substance_name|
-  Substance.create(name: substance_name)
+  Substance.create(name: substance_name, status: :ordinable)
 end
