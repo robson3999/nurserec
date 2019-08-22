@@ -2,7 +2,7 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
   extend Forwardable
 
   def_delegators :@view, :link_to, :edit_medicament_path, :medicament_path,
-                 :medicament_group_path, :html_safe, :raw, :current_user
+                 :medicament_group_path, :html_safe, :raw, :current_user, :substance_path
 
   def initialize(params, opts = {})
     @view = opts[:view_context]
@@ -15,6 +15,7 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
       name: { source: 'Medicament.name', cond: :like },
       status: { source: 'Medicament.status' },
       groups: { source: 'Medicament.medicament_groups', searchable: false, orderable: false },
+      substances: { source: 'Substance.name', searchable: true, orderable: false },
       actions: { source: '', searchable: false, orderable: false }
     }
   end
@@ -26,15 +27,16 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
         name: link_to(record.name, medicament_path(record), class: 'text-dark'),
         status: status_badge(record.status),
         groups: raw(medicament_groups(record)),
+        substances: raw(medicament_substances(record)),
         actions: raw(medicament_actions(record))
       }
     end
   end
 
   def get_raw_records
-    return medicament_group.medicaments if medicament_group.present?
+    return medicament_group.medicaments.includes(:substances).references(:substances) if medicament_group.present?
 
-    Medicament.ordinable
+    Medicament.includes(:substances).references(:substances)
   end
 
   def medicament_groups(record)
@@ -44,6 +46,15 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
     end
 
     groups.join('<br />').html_safe
+  end
+
+  def medicament_substances(record)
+    substances = []
+    record.substances.map do |substance|
+      substances << link_to(substance.name, substance_path(substance), class: 'btn btn-sm btn-info')
+    end
+
+    substances.join('<br />').html_safe
   end
 
   def medicament_actions(record)

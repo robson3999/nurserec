@@ -1,6 +1,6 @@
 .row
   .col-10
-    %h2 Lista leków ordynowanych
+    %h2 Lista leków
   - if current_user&.admin?
     .col-2.text-right
       = link_to 'Dodaj lek', new_medicament_path, class: 'btn btn-sm btn-success'

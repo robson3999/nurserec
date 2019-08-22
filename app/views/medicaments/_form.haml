@@ -1,5 +1,6 @@
 = simple_form_for medicament do |f|
   = f.input :name, label: 'Nazwa'
+  = f.association :substances, input_html: { class: 'select2' }, label: 'Substancje aktywne'
   = f.input :status, as: :select, collection: medicaments_statuses
   = f.association :medicament_groups, input_html: { class: 'select2' }, label: 'Grupy leków'
   = f.button :submit, class: 'btn btn-primary'

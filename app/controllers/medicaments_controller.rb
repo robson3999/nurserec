@@ -39,7 +39,7 @@ class MedicamentsController < ApplicationController
   end
 
   def medicament_params
-    params.require(:medicament).permit(:name, :status, medicament_group_ids: [])
+    params.require(:medicament).permit(:name, :status, medicament_group_ids: [], substance_ids: [])
   end
 
   def medicaments_kind
