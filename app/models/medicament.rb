@@ -4,9 +4,8 @@ class Medicament < ApplicationRecord
   has_many :medicament_substances, dependent: :destroy
   has_many :substances, through: :medicament_substances
   jsonb_accessor :data,
-    way_of_application: :string,
     description: :string, # postac i dawka, zawartosc opakowania
-    ean: :string,
+    container: :string,
     decision_created_at: :string,
     decision_period: :string,
     limit_group: :string,

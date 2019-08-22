@@ -7,18 +7,18 @@ module Substances
     end
 
     def call
-      return if substance_exists?
+      return substance if substance.present?
 
-      substance = Substance.new(params)
-      return 'failure' unless substance.save
+      new_substance = Substance.new(params)
+      return 'failure' unless new_substance.save
 
-      substance
+      new_substance
     end
 
     private
 
-    def substance_exists?
-      Substance.find_by(name: params[:name]).present?
+    def substance
+      Substance.find_by(name: params[:name])
     end
   end
 end

@@ -1,11 +1,61 @@
 .row
   .col-10 
     %h1= medicament.name
-
+    %span.badge{class: (medicament.ordinable? ? 'badge-success' : 'badge-secondary')}= I18n.t("medicaments.#{medicament.status}")
   - if current_user&.admin?
     .col-2
       = link_to 'Edycja', edit_medicament_path(medicament), class: 'btn btn-sm btn-light'
 %hr
+.row
+  .col-12
+    %h3 Informacje
+
+    %table.table
+      %thead
+        %tr
+          %th Właściwość
+          %th Wartość
+      %tbody
+        %tr
+          %td Substancje czynne
+          %td= medicament.substances.pluck(:name).join(', ')
+        %tr
+          %td Postać i dawka leku
+          %td= medicament.description
+        %tr
+          %td Zawartość opakowania
+          %td= medicament.container
+        %tr
+          %td Kod EAN lub inny kod odpowiadający kodowi EAN
+          %td= medicament.ean
+        %tr
+          %td Termin wejścia w życie decyzji
+          %td= medicament.decision_created_at
+        %tr
+          %td Okres obowiązywania decyzji
+          %td= medicament.decision_period
+        %tr
+          %td Grupa limitowa
+          %td= medicament.limit_group
+        %tr
+          %td Urzędowa cena zbytu
+          %td= medicament.gov_price
+        %tr
+          %td Cena hurtowa brutto
+          %td= medicament.gross_price
+        %tr
+          %td Wysokość limitu finansowania
+          %td= medicament.finance_limit
+        %tr
+          %td Oznaczenie załącznika zawierającego zakres wskazań objętych refundacją  wg ICD 10
+          %td= medicament.attachment_with_indication_name
+        %tr
+          %td Poziom odpłatności
+          %td= medicament.payment_level
+        %tr
+          %td Wysokość dopłaty świadczeniobiorcy
+          %td= medicament.additional_payment
+
 .row
   .col-12
     %h2 Substancje aktywne

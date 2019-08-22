@@ -12,7 +12,7 @@ module Admin
 
       def call
         csv.each do |row|
-          service = ::Substances::Create.new(params: substance_params(row[0])).call
+          ::Substances::Create.new(params: substance_params(row[0])).call
         end
       end
 

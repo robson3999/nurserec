@@ -1,4 +1,2 @@
 %tr
-  %td= medicament_group.id
-  %td= medicament_group.name
-  %td= link_to 'Wyświetl', medicament_group_path(medicament_group)
+  %td= link_to medicament_group.name, medicament_group_path(medicament_group), class: 'text-dark'

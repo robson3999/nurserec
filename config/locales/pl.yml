@@ -1,5 +1,6 @@
 pl:
   medicaments:
+    not_available: brak informacji
     ordinable: ordynowany
     pursued: kontynuowany
   helpers:
@@ -10,5 +11,5 @@ pl:
       substance:
         create: Dodaj substancję
         update: Zaktualizuj zmiany
-      substances:
+      drugs:
         submit: Wyślij

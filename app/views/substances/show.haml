@@ -18,4 +18,4 @@
     %h2 Leki
     %ol
       - substance.medicaments.each do |medicament|
-        %li= link_to medicament.name, medicament_path(medicament), class: 'text-dark'
+        %li= link_to "#{medicament.name} (#{medicament.description})", medicament_path(medicament), class: 'text-dark'
