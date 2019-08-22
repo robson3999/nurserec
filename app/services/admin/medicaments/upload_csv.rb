@@ -31,7 +31,7 @@ module Admin
       # postac i dawka
       def medicament_description(row)
         row_one = row[2].split(',')
-        row_one[1..row_one.size].join(', ')
+        row_one[1..row_one.size].join(', ').strip
       end
 
       def medicament_params(row, substance_id)

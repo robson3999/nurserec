@@ -24,7 +24,7 @@ class MedicamentDatatable < AjaxDatatablesRails::ActiveRecord
     records.map do |record|
       {
         id: record.id,
-        name: link_to(record.name, medicament_path(record), class: 'text-dark'),
+        name: link_to("#{record.name} (#{record.description})", medicament_path(record), class: 'text-dark'),
         status: status_badge(record.status),
         groups: raw(medicament_groups(record)),
         substances: raw(medicament_substances(record)),
