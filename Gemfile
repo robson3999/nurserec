@@ -32,7 +32,7 @@ gem 'jquery-datatables', '~> 1.10', '>= 1.10.19.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'pundit', '~> 2.1'
 gem 'select2-rails', '~> 4.0', '>= 4.0.3'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
